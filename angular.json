@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "swapiapp"
+    }
+  },
+  "defaultProject": "swapiapp",
+  "cli": {
+    "analytics": false
+  }
 }
