@@ -14,6 +14,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 // Importar las rutas
 import { ROUTES } from './app.routes';
 
+//services
+import { SwapiService } from './services/swapi.service';
 
 
 
@@ -31,7 +33,9 @@ import { ROUTES } from './app.routes';
   HttpClientModule,
   RouterModule.forRoot (ROUTES, {useHash: true})
   ],
-  providers: [],
+
+  providers: [SwapiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

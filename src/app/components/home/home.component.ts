@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { SwapiService } from 'src/app/services/swapi.service';
 
 @Component({
   selector: 'app-home',
@@ -7,20 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
 
-
-  personajes: any[] = [];
+actoresSW: any[] =[];
 
   // agregamos como parametro el httpClient
-  constructor( private http: HttpClient) {
+  constructor( private swapi: SwapiService) {
 
-    console.log ('Çonstructor del Home hecho');
-    this.http.get('https://swapi.dev/api/people')
-         .subscribe( (resp: any) => {
-           this.personajes = resp;
-            console.log(resp);
-          });
+    //tener la data en la manos
+    this.swapi.getNewReleases()
+    .subscribe((data: any) => {
+      console.log(data.results);
+      this.actoresSW = data.results;
+
+    });
+   
   
   }
   ngOnInit() {
